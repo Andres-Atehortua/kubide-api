@@ -6,16 +6,16 @@ const http = require("http");
 let app = require("./../app");
 app.disable("x-powered-by");
 
-// catch 404 and render a not-found.hbs template
-app.use((req, res, next) => {
+// Error 404 y enviar json del error
+app.use((req, res) => {
   res.status(404).json({ ok: false, message: "No se ha encontrado la ruta." });
 });
 
 app.use((err, req, res) => {
-  // always log the error
+  // Mostrar siempre el error
   console.error("ERROR", req.method, req.path, err);
 
-  // only render if the error ocurred before sending the response
+  // Solo enviar json si el error ocure antes de enviar la respuesta
   if (!res.headersSent) {
     res.status(500).json({
       ok: false,
@@ -32,7 +32,7 @@ server.on("error", (error) => {
     throw error;
   }
 
-  // hManejar errores específicos con mensajes amistosos.
+  // Manejar errores específicos con mensajes amistosos.
   switch (error.code) {
     case "EACCES":
       console.error(`Port ${process.env.PORT} requires elevated privileges`);

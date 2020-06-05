@@ -1,9 +1,9 @@
 //Express imports
 const express = require("express");
 const router = express.Router();
+// Controller
+const { HomeController } = require("./../controllers");
 
-router.get("/", (req, res) => {
-  res.json({ ok: true, message: "Bienvenido" });
-});
+router.get("/", HomeController.index);
 
 module.exports = router;
