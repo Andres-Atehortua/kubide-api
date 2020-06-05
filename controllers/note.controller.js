@@ -2,6 +2,7 @@
 const { NoteModel } = require("./../models");
 
 class NoteController {
+  // Obtener todas las notas
   async getAll(req, res) {
     try {
       const allNotes = await NoteModel.find();
@@ -11,6 +12,7 @@ class NoteController {
     }
   }
 
+  // Crear una nota
   async createNote(req, res) {
     let { title, description } = req.body;
 
@@ -24,6 +26,7 @@ class NoteController {
     }
   }
 
+  // Obtener una nota por id
   async getOneNote(req, res) {
     let { id } = req.params;
 
@@ -43,6 +46,8 @@ class NoteController {
       });
     }
   }
+
+  // Marcar una nota como favorita
   async setAsFavorite(req, res) {
     let { id } = req.params;
     try {
@@ -66,6 +71,7 @@ class NoteController {
     }
   }
 
+  // Obtener todas las notas favoritas
   async getAllFavorites(req, res) {
     try {
       const allFavorites = await NoteModel.find({ favorite: true });
