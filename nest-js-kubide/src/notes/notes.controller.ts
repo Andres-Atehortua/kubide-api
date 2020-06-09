@@ -8,6 +8,8 @@ import {
   Param,
   Patch,
   NotFoundException,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { NotesService } from './notes.service';
 import { Note } from './interfaces/note.interface';
@@ -18,6 +20,7 @@ export class NotesController {
   constructor(private noteService: NotesService) {}
 
   @Post('/create')
+  @UsePipes(ValidationPipe)
   async createNote(
     @Res() res,
     @Body() createNoteDto: CreateNoteDto,
