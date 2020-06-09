@@ -1,3 +1,45 @@
+# Kubide API NestJS
+
+API REST for Kubide desarrollada con NestJS
+
+## Installation
+
+`Run npm install`
+
+## Endpoints
+
+| HTTP Method | URI path            | Description                                                  |
+| ----------- | ------------------- | ------------------------------------------------------------ |
+| GET         | /                   | Welcome message on JSON format                               |
+| GET         | /notes/:id          | Get a `note` by ID on JSON format                            |
+| GET         | /notes              | Get all `notes` on JSON format                               |
+| POST        | /notes/create       | Create a `note` on JSON format                               |
+| PATCH       | /notes/:id/favorite | Set `note` favorite property to true or false on JSON format |
+| GET         | /notes/favorites    | Get all favorites `notes` on JSON format                     |
+
+## JSON response format
+
+```json
+{
+  "_id": "5eda4cd52428c12a93673a32",
+  "favorite": true,
+  "title": "Título super molón",
+  "description": "bla bla bla bla bla",
+  "createdAt": "2020-06-05T13:47:01.092+00:00",
+  "updatedAt": "2020-06-05T14:19:31.528+00:00",
+  "__v": 0
+}
+```
+
+## JSON response data types
+
+| Property      | Data type |
+| ------------- | --------- |
+| `_id`         | String    |
+| `title`       | String    |
+| `description` | String    |
+| `favorite`    | Boolean   |
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
@@ -6,7 +48,7 @@
 [travis-url]: https://travis-ci.org/nestjs/nest
 [linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
 [linux-url]: https://travis-ci.org/nestjs/nest
-  
+
   <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
     <p align="center">
 <a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
@@ -72,4 +114,4 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## License
 
-  Nest is [MIT licensed](LICENSE).
+Nest is [MIT licensed](LICENSE).
