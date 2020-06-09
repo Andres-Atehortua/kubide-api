@@ -14,6 +14,7 @@ import {
 import { NotesService } from './notes.service';
 import { Note } from './interfaces/note.interface';
 import { CreateNoteDto } from './dto/create-note.dto';
+import { FavoriteValidationPipe } from './pipes/note-favorite-validation.pipe';
 
 @Controller('notes')
 export class NotesController {
@@ -64,8 +65,8 @@ export class NotesController {
   async updateFavoriteNote(
     @Res() res,
     @Param('id') id: string,
-    @Body('favorite') favorite: boolean,
-  ): Promise<Note[]> {
+    @Body('favorite', FavoriteValidationPipe) favorite: any,
+  ): Promise<Note> {
     const favoriteNote = await this.noteService.updateNoteFavorite(
       id,
       favorite,
