@@ -16,7 +16,7 @@ export class NotesService {
   }
 
   async getFavoritesNotes(): Promise<Note[]> {
-    const favoriteNotes = await this.noteModel.find({ favorite: true });
+    const favoriteNotes = await this.noteModel.find({ favorite: 'true' });
     return favoriteNotes;
   }
 
@@ -31,7 +31,7 @@ export class NotesService {
     return createdNote;
   }
 
-  async updateNoteFavorite(id: string, favorite: boolean): Promise<Note> {
+  async updateNoteFavorite(id: string, favorite: string): Promise<Note> {
     const updatedNote = await this.noteModel.findByIdAndUpdate(
       id,
       {
