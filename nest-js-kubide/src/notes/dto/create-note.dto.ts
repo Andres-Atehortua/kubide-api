@@ -5,5 +5,5 @@ export class CreateNoteDto {
   @IsNotEmpty()
   description: string;
 
-  favorite: boolean;
+  favorite: string;
 }
