@@ -1,0 +1,17 @@
+version: "3"
+services:
+  api:
+    build: .
+    depends_on:
+      - db
+    environment:
+      PORT: "3000"
+      DB: "mongodb://db:27017/mongo-prueba"
+    ports:
+      - "3000:3000"
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - "$PWD/data:/data/db"
